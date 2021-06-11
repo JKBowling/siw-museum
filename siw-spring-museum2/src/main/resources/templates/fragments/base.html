@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles">
+	<meta charset="UTF-8" />
+	<link th:href="@{/css/homeNew1.css}" rel="stylesheet">
+	<link th:href="@{/css/utenteForm.css}" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Almendra+SC&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<header th:fragment="intestazione">
+	<nav>
+		<ul id="navigazioine">
+			<a class="linkMenu" th:href="@{/}"><img id="logo" src="/images/logo1.png" alt="Museo di Arte Artistica" /></a>
+			<li><a th:href="@{/}" class="current">Home</a></li>
+			<li><a href="#">Autori</a></li>
+			<li><a href="#">Collezioni</a></li>
+			<li><a href="#">Informazioni</a></li>
+		</ul>
+	</nav>
+</header>
+	
+	<footer  th:fragment="footer" id="footer">
+		<div id="intestazione"><p>INFORMAZIONI UTILI</p></div>
+		<div id="info-container">
+			<div class="info">
+				<p>CHI SIAMO:</p>
+				<ul class="utili">
+					<li>siamo un museo molto bello e affascinante, nato da poco per diffonedere cultura e bellezza.</li>
+				</ul>
+			</div>
+			<div class="info"><p>DOVE SIAMO:</p>
+				<ul class="utili">
+					<li>Via: Via Poltorrea 14;</li>
+					<li>Comune:Fiano Romano;</li>
+					<li>Provincia: Roma;</li>
+					<li>Indicazioni stradali: km 69 della via Lattea;</li>
+				</ul>
+			</div>
+			<div class="info"><p>CONTATTI:</p>
+				<ul class="utili">
+					<li>Facebook: Museo di Arte Artistica;</li>
+					<li>Instagram: MuseoDiArteArtistica;</li>
+					<li>Cellulare: +39 331 1234567;</li>
+					<li>Telefono: 0637 23345;</li>
+					<li>Email: museodiarteartisticaroma@gmail.com</li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
