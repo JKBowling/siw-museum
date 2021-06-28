@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='home')"></head>
+
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>
+		<form th:action = "@{/admin/opera}" method = "POST" th:object = "${opera}">
+			<div class = "container">
+				<div class = "dati">
+					
+                	<div><span class="label">Titolo:</span></div>
+					<span><input type = "text" th:field = "*{titolo}" required/></span>
+				</div>
+				<div class = "dati">
+					<span>Anno di realizzazione</span>
+					<span><input type = "date" th:field = "*{annoRealizzazione}"/></span>
+				</div>
+				<div class = "dati">
+					
+                	<div><span class="label">Descrizione:</span></div>
+					<span><input type = "text" th:field = "*{descrizione}" required/></span>
+				</div>
+				<div class = "dati">
+					
+                	<div><span class="label">Codice:</span></div>
+					<span><input type = "text" th:field = "*{code}" required/></span>
+				</div>
+				<div class = "dati">
+					<span>Collezione</span>
+					<select name = "collezione" th:field = "*{collezione}">
+						<option th:each = "collezione : ${collezioni}"
+								th:value = "collezione.nome" 
+								th:text = "${collezione.code} + ':' + ${collezione.nome}">
+						</option>
+					</select>	
+				</div>
+				
+				<div class = "btn">
+					<span><button type = "submit">Inserisci</button></span>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>	
+					
+			

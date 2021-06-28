@@ -1,0 +1,70 @@
+body{
+	display:flex;
+	flex-direction:column;
+	background-image: url("/images/sfondo.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	font-family: 'Almendra SC', serif;
+	align-items: center;
+	justify-content:center;
+	width:100%;
+	height:100%;
+	
+}
+
+#desc{
+	text-align: center;
+	font-family: 'Almendra SC', serif;
+	font-size: 35px;
+	color: #7b2900;
+}
+#immagini{
+	display:flex;
+	justify-content: center;
+	font-size: 80%;
+	width:95%;
+	margin-left:40%;
+	margin-right:40%;
+	margin-bottom:2%;
+	background-color: rgba(229,229,229, 0.3);
+
+
+}
+
+.colonne{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap:wrap;
+	padding:4%;
+	width:30%;
+}
+
+.colonna{
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	width:100%;
+	height:100%;
+	padding:3%;
+}
+
+.img{
+	width: 100%;
+	height: 100%;
+	border: 3px inset white;
+}
+p.titolo{	
+	margin: 0px auto 0px auto;
+	border-left: 2px inset white;
+	border-right: 2px inset white;
+	border-bottom: 2px inset white;
+	padding: 10px;
+	font-weight: bold;
+	color: black;
+}
+h4{
+	color: #7b2900;
+}

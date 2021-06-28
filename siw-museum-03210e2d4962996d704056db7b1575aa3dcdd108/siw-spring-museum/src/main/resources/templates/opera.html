@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='Dettaglio opera')"></head>
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>
+		<div id="contenitore-opera">
+			<section  id="single-opera" th:if = "${opera}" th:object = "${opera}">
+			<div class="descrizione"><p  th:text="${opera.descrizione}">descrizone-opera</p></div>
+			<div class="immagins"><p id="nome" th:text = "${opera.titolo}" style="text-transform: uppercase;">qui-titolo</p>
+			<img class="quadro" th:src="@{${'/images/' + opera.titolo + '.jpg'}}"/></div>
+			</section>
+		</div>
+		<footer th:replace="fragments/base.html :: footer"></footer>	
+	</body>
+</html>
