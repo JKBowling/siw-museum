@@ -4,7 +4,7 @@
 	<body>
 		<header th:replace="fragments/base.html :: intestazione"></header>
 		<form th:action = "@{/admin/artista}" method = "POST" th:object = "${artista}">
-			<div class = "container">
+			<div class = "containerA">
 				<div class = "dati" >
 					<span>Nome</span>
 					<span ><input type = "text" th:field = "*{nome}" required/></span>
@@ -39,7 +39,7 @@
 				</div>
 				<div class = "dati">
 					<span>Vita</span>
-					<textarea th:field = "*{vita}"  cols="100" rows="10" required>Inserisci informazioni circa la vita dell'artista'</textarea>
+					<textarea th:field = "*{vita}"  cols="40" rows="5" required>Inserisci informazioni circa la vita dell'artista'</textarea>
 				</div>
 				<div class = "btn">
 					<span><button type = "submit">Inserisci</button></span>

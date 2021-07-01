@@ -18,9 +18,6 @@ public class OperaValidator implements Validator {
 	@Autowired
 	private OperaService operaService;
 	
-	@Autowired
-	private ArtistaService artistaService;
-	
 	private final static Logger logger = LoggerFactory.getLogger(OperaValidator.class);
 
 	@Override

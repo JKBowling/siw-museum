@@ -20,6 +20,16 @@ h1{
 	width:90%;
 }
 
+div.containerA{
+	background-color: rgba(229,229,229, 0.3);
+	border: 2% solid black;
+	width:100%;
+	height:100%;
+	padding: 3%;
+	font-size: 100%;
+	border-radius: 5%;
+}
+
 div.opt{
 	display:flex;
 	flex-direction: column;
