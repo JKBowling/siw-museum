@@ -10,6 +10,14 @@ body{
 	margin:2%;
 }
 
+#nomeArt{
+	font-size:100%;
+}
+
+#lista{
+	font-size:100%;
+}
+
 #biografia{
 	width:50%;
 	height:100%;
@@ -20,12 +28,23 @@ body{
 
 .life{
 	text-align:center;
+	height:50%;
 }
+
+.nada{
+	display:flex;
+	justify-content:center;
+	align-content:center;
+	width:100%;
+}
+
+
 .dato-art{
 	margin:4%;
 	display:flex;
 	align-items:center;
 	justify-content:flex-start;
+	font-size:100%;
 }
 
 #grafica{
@@ -39,6 +58,7 @@ body{
 
 .name-a{
 	text-align:center;
+	font-size:100%;
 }
 
 #artista-content{
@@ -72,39 +92,59 @@ img.volto{
 
 #opere-artista{
 	width:95%;
+	height:10000%;
 	background-color: rgba(229,229,229, 0.3);
 	margin-bottom:3%;
 	margin-top:3%;
+	
 }
 
 #stanza{
 	display: flex;
-	flex-direction: column;
-	justify-content:center;
-	align-items:center;
+
+	justify-content:flex-start;
+	flex-wrap:wrap;
+	width:100%;
+	height:100%;
 }
-div.parete{
+div.parete-opere{
 	display: flex;
-	margin: 20px auto;
+	align-items:center;
+	flex-wrap:wrap;
+	width:100%;
+	margin:2%;
 }
+
 div.opere{
 	display: flex;
 	flex-direction: column;
+	align-items:center;
+	justify-content:center;
+	width:33%;
+	height:0.01%;
 }
+
+div.parete{
+	display: flex;
+	align-items:center;
+	width:30%;
+}
+
 img.opere{
-	width: 396px;
-	height: 558px;
-	border:10px solid black;
+	width: 100%;
+	height: 100%;
+	border:2% solid black;
 }
+
 img.opere_bi{
-	width: 450px;
-	height: 600px;
-	border: 10px solid black;
+	width: 100%;
+	height: 100%;
+	border: 5px solid black;
 }
-p.quadro{	
-	margin: auto;
-	border-left: 2px solid black;
-	border-right: 2px solid black;
-	border-bottom: 2px solid black;
-	padding: 10px;
+.quadro{	
+	padding: 0%;
+	width:100%;
+	display:flex;
+	justify-content:center;
+	
 }

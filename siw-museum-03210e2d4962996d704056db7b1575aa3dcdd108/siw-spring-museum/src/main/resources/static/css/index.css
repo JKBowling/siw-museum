@@ -1,7 +1,7 @@
 body{
 	display:flex;
 	flex-direction:column;
-	background-image: url("/images/sfondo.png");
+	background-image: url("/images/sfondo.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
@@ -20,36 +20,47 @@ body{
 	color: #7b2900;
 }
 #immagini{
-	display:flex;
-	justify-content: center;
-	font-size: 80%;
-	width:95%;
-	margin-left:40%;
-	margin-right:40%;
-	margin-bottom:2%;
-	background-color: rgba(229,229,229, 0.3);
+	display: flex;
+
+	justify-content:flex-start;
+
+	flex-wrap:wrap;
+	width:100%;
+	height:100%;
 
 
 }
 
 .colonne{
-	display:flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	display: flex;
+	align-items:center;
+	justify-content:center;
 	flex-wrap:wrap;
-	padding:4%;
-	width:30%;
+	width:33%;
+	height:0.01%;
+	margin:2%;
 }
 
 .colonna{
-	display:flex;
+	display: flex;
 	flex-direction: column;
-	align-items: center;
-	width:100%;
-	height:100%;
-	padding:3%;
+	align-items:center;
+	justify-content:center;
+	width:33%;
+	height:0.01%;
 }
+
+#int{
+	display:flex;
+	justify-content:center;
+	
+}
+
+/*********************************************/
+
+
+/*********************************************/
+
 
 .img{
 	width: 100%;

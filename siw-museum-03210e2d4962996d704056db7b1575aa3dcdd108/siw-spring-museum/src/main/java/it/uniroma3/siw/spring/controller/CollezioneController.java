@@ -45,8 +45,8 @@ public class CollezioneController {
 	
 	@RequestMapping(value = "/collezioni", method = RequestMethod.GET)
 	public String getCollezioni(Model model) {
-		
-		model.addAttribute(this.collezioneService.tutti());
+		if(this.collezioneService.tutti().size()!=0)
+			model.addAttribute("collezioni",this.collezioneService.tutti());
 		return "collezioni.html";
 		
 	}
@@ -60,8 +60,8 @@ public class CollezioneController {
 			model.addAttribute("collezioni", this.collezioneService.tutti());
 			return "collezioni.html";
 		}
-		
-		return "collezioneForm.html";
+
+		return "/admin/collezioneForm.html";
 		
 	}
 

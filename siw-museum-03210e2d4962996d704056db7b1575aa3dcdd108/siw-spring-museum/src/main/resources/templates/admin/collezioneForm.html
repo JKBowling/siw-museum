@@ -17,24 +17,15 @@
 					<span>Codice</span>
 					<span><input type = "text" th:field = "*{code}" required/></span>
 				</div>
-				<div class = "dati">
+				<!--<div class = "dati">
 					<span>Curatore</span>
-					<select name = "Curatore" th:field = "*{Curatore}">
+					<select name = "curatore" th:field = "*{curatore}">
 						<option th:each = "curatore : ${curatori}"
 								th:value = "curatore.nome" 
 								th:text = "${curatore.code} + ':' + ${curatore.nome} + ' ' + ${curatore.cognome}">
 						</option>
 					</select>	
-				</div>
-				<div class = "dati">
-					<span>Opere</span>
-					<select name = "opere" th:field = "*{opere}" multiple>
-						<option th:each = "opera : ${opere}"
-								th:value = "opera.nome" 
-								th:text = "${opera.code} + ':' + ${opera.nome}">
-						</option>
-					</select>
-				</div>
+				</div>-->
 				<div class = "btn">
 					<span><button type = "submit">Inserisci</button></span>
 				</div>

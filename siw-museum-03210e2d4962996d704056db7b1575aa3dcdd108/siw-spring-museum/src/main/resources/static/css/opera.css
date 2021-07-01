@@ -10,6 +10,8 @@
 	background-color: rgba(229,229,229, 0.3);
 	margin-bottom:8%;
 	margin-top:8%;
+	width:95%;
+	height:70%;
 }
 
 .immagins{
@@ -17,8 +19,14 @@
 	flex-direction:column;
 	align-items:center;
 	justify-content:center;
+	margin:2%;
 }
 
+
+
+.nome-cognome{
+	display:flex;
+}
 
 .quadro{
 	width:100%;
@@ -30,4 +38,36 @@
 	height:100%;
 	margin-right:3%;
 	font-size:100%;
+}
+
+/*/////////////////////////////////*/
+
+
+select:hover{
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  font-size:110%;
+}
+
+/*select{
+  color: rgb(0, 0, 0);
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  border-style: 5%;
+  cursor: pointer;
+}*/
+
+select{
+ color:black;
+  /* First we need to help some browsers along for this to work.
+     Just because a vendor prefix is there, doesn't mean it will
+     work in a browser made by that vendor either, it's just for
+     future-proofing purposes I guess. */
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition:.5s;
 }

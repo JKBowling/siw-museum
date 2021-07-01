@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.uniroma3.siw.spring.model.Artista;
 import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.service.ArtistaService;
 import it.uniroma3.siw.spring.service.CollezioneService;
@@ -111,21 +112,28 @@ public class OperaController {
 	public String cancellaOpera(@RequestParam("opera")String cerca, Model model) {
 		Boolean v = this.operaService.eliminaOpera(cerca);
 		if(v) {
-			model.addAttribute("opere",this.operaService.tutti());
+			if(this.operaService.tutti().size()!=0)
+				model.addAttribute("opere",this.operaService.tutti());
 			return "opere.html";
 		}
 	 return "/admin/rimuoviOperaForm.html";
 	}
 	
 	
-	
 	@RequestMapping(value = "/admin/opera", method = RequestMethod.POST)
-	public String newOpera(@ModelAttribute("opera") Opera opera, Model model, BindingResult bindingResult) {
+	public String newOpera(@ModelAttribute("opera") Opera opera,@RequestParam("artista")String artista,
+			@RequestParam("collection")String collezione,Model model, BindingResult bindingResult) {
 		this.operaValidator.validate(opera, bindingResult);
+		artista.trim();
+		String[] s = artista.split("\\s+");
 		if(!bindingResult.hasErrors()) {
-			this.operaService.inserisci(opera);
-			model.addAttribute("opere", this.operaService.tutti());
-			return "opere.html";
+			if(this.artistaService.artistaPerNomeAndCognome(s[0], s[1]).size()!=0 && this.collezioneService.collezionePerNome(collezione).size()!=0) {
+				opera.setAutore(this.artistaService.artistaPerNomeAndCognome(s[0], s[1]).get(0));
+				opera.setCollezione(this.collezioneService.collezionePerNome(collezione).get(0));
+				this.operaService.inserisci(opera);
+				model.addAttribute("opere", this.operaService.tutti());
+				return "opere.html";
+			}
 		}
 		return "/admin/operaForm.html";
 	}

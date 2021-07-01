@@ -1,5 +1,8 @@
 package it.uniroma3.siw.spring.controller;
 
+import java.util.List;
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +40,6 @@ public class ArtistaController {
 		
 			logger.debug("addArtista");
 			model.addAttribute("artista", new Artista());
-			model.addAttribute("opere", this.operaService.tutti());
 			return "/admin/artistaForm.html";
 			
 	}
@@ -46,8 +48,10 @@ public class ArtistaController {
 	
 	@RequestMapping(value = "/artista/{id}", method = RequestMethod.GET)
 	public String getArtista(@PathVariable("id") Long id, Model model) {
-		
-		model.addAttribute("artista", this.artistaService.artistaPerId(id));
+		Artista a = this.artistaService.artistaPerId(id);
+		model.addAttribute("artista",a);
+		if(this.operaService.operaPerAutore(a).size()!=0)
+			model.addAttribute("opere",this.operaService.operaPerAutore(a));
 		return "artista.html";
 		
 	}
@@ -67,10 +71,14 @@ public class ArtistaController {
 	}
 	
 	@RequestMapping(value = "/admin/cancellaArtista" , method = RequestMethod.GET)
-	public String cancellaArtista(@RequestParam("artista")String nome,@RequestParam("artista-cognome")String cognome, Model model) {
-		Boolean v = this.artistaService.eliminaArtista(nome,cognome);
+	public String cancellaArtista(@RequestParam("artista")String artista, Model model) {
+
+		artista.trim();
+		String[] s = artista.split("\\s+");
+		Boolean v = this.artistaService.eliminaArtista(s[0],s[1]);
 		if(v) {
-			model.addAttribute("artisti",this.artistaService.tutti());
+			if(this.artistaService.tutti().size()!=0)
+				model.addAttribute("artisti",this.artistaService.tutti());
 			return "artisti.html";
 		}
 		return "/admin/rimuoviArtistaForm.html";

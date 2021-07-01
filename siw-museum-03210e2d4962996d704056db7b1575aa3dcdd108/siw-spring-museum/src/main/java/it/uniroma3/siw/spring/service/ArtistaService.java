@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.spring.model.Artista;
+import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.repository.ArtistaRepository;
 
 
@@ -30,11 +31,11 @@ public class ArtistaService {
 	
 	@Transactional
 	public Boolean eliminaArtista(String nome,String cognome) {
-		List<Artista> artistaElimina = this.artistaRepository.findByNomeAndCognomeIgnoreCaseContaining(nome, cognome);
-		if(artistaElimina.size()!=0) {
-		this.artistaRepository.deleteAll(artistaElimina);
-		return true;
-		}
+		List<Artista> artistaElimina = this.artistaRepository.findByNomeOrCognomeIgnoreCaseContaining(nome, cognome);
+			if(artistaElimina.size()!=0) {
+				this.artistaRepository.deleteAll(artistaElimina);
+				return true;
+			}
 		return false;
 	}
 	
@@ -49,7 +50,12 @@ public class ArtistaService {
 	
 	@Transactional
 	public List<Artista> artistaPerNomeAndCognome(String nome, String cognome) {
-		return artistaRepository.findByNomeAndCognomeIgnoreCaseContaining(nome, cognome);
+		return artistaRepository.findByNomeOrCognomeIgnoreCaseContaining(nome, cognome);
+	}
+	
+	@Transactional
+	public List<Artista> artistaPerCognome(String cognome) {
+		return artistaRepository.findByCognomeIgnoreCaseContaining(cognome);
 	}
 	
 	@Transactional

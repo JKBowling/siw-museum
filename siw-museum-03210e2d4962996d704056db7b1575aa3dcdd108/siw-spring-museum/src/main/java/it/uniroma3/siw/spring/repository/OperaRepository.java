@@ -20,7 +20,7 @@ public interface OperaRepository extends CrudRepository<Opera, Long> {
 	@Query("update Opera o set o.delMese = ?1 where o.id = ?2")
 	public void setOperaDelMese(Boolean value, Long userId);
 	
-	public List<Opera>  findByTitoloIgnoreCaseContaining(String name);;
+	public List<Opera>  findByTitoloIgnoreCaseContaining(String name);
 	
 	public List<Opera> findByAutore(Artista autore);
 	

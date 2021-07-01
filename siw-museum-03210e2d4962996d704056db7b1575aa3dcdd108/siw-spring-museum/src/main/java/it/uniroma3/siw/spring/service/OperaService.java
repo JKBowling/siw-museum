@@ -54,8 +54,8 @@ public class OperaService {
 	public Boolean eliminaOpera(String titolo) {
 		List<Opera> operaElimina = this.operaRepository.findByTitoloIgnoreCaseContaining(titolo);
 		if(operaElimina.size()!=0) {
-		this.operaRepository.deleteAll(operaElimina);
-		return true;
+			this.operaRepository.deleteAll(operaElimina);
+			return true;
 		}
 		return false;
 	}
@@ -70,9 +70,11 @@ public class OperaService {
 		return operaRepository.findByAutore(autore);
 	}
 	
+	@Transactional
 	public List<Opera> operaPerCollezione(Collezione collezione){
 		return operaRepository.findByCollezione(collezione);
 	}
+	
 	
 	@Transactional
 	public boolean alreadyExists(Opera opera) {

@@ -1,5 +1,7 @@
 package it.uniroma3.siw.spring.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.spring.model.Credentials;
+import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.model.User;
 import it.uniroma3.siw.spring.service.CredentialsService;
 import it.uniroma3.siw.spring.service.OperaService;
@@ -58,7 +61,10 @@ public class AuthenticationController {
 	
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		model.addAttribute("opere",this.operaService.opereDelMese());
+		
+		List<Opera> opereMese = this.operaService.opereDelMese();
+		if(opereMese.size()!=0)
+			model.addAttribute("opere",opereMese);
 		if(credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 			return "/admin/home.html";
 		}

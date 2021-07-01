@@ -25,7 +25,7 @@ public class Opera {
 	@Column
 	private String annoRealizzazione;
 	
-	@Column
+	@Column(nullable=true,length=20000)
 	private String descrizione;
 	
 	@Column(unique = true)
@@ -37,7 +37,7 @@ public class Opera {
 	@ManyToOne
 	private Collezione collezione;
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Artista autore;
 	
 	public Opera() {}

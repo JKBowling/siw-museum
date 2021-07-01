@@ -32,10 +32,10 @@ public class Collezione {
 	@Column
 	private String code;
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Curatore curatore;
 	
-	@OneToMany(mappedBy = "collezione", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany(mappedBy = "collezione", cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	private List<Opera> opere;
 	
 	public Collezione() {

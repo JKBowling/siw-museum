@@ -6,8 +6,12 @@
 		<div id="contenitore-opera">
 			<section  id="single-opera" th:if = "${opera}" th:object = "${opera}">
 			<div class="descrizione"><p  th:text="${opera.descrizione}">descrizone-opera</p></div>
-			<div class="immagins"><p id="nome" th:text = "${opera.titolo}" style="text-transform: uppercase;">qui-titolo</p>
-			<img class="quadro" th:src="@{${'/images/' + opera.titolo + '.jpg'}}"/></div>
+			<div class="immagins">
+			<img class="quadro" th:src="@{${'/images/' + opera.titolo + '.jpg'}}"/>
+			<p id="nome" th:text = "${opera.titolo} +','" style="text-transform: uppercase;">qui-titolo</p>
+			<div class="nome-cognome"><p id="nome" th:text = "*{autore.nome} + '&ensp;'" style="text-transform: uppercase;">qui autore nome</p>
+			<p id="nome" th:text = "*{autore.cognome}" style="text-transform: uppercase;">qui autore cognome</p></div>
+			</div>
 			</section>
 		</div>
 		<footer th:replace="fragments/base.html :: footer"></footer>	

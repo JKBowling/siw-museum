@@ -4,17 +4,19 @@
 	<body>
 		<header th:replace="fragments/base.html :: intestazione"></header>
 		
-			<section id="immagini">
-				<div class="colonne" th:if = "${opere}" th:each="opera : ${opere}">
-						<span class="colonna" th:if="${opera}">
-							<a id="nome" th:href = "@{'/opera' + '/' + ${opera.id}}" ><img class="img" alt="${opera.titolo}" th:src="@{${'/images/'+ opera.titolo +'.jpg'}}"/></a>
-							<a id="nome" th:href = "@{'/opera' + '/' + ${opera.id}}" th:text = "${opera.titolo}" style="text-transform: uppercase;">qui-descrizione</a>
-						</span>
+		<p th:if="${opere}" id="par">Le nostre opere del mese</p>
+		<p th:unless="${opere}" id="par">Non ci sono opere del mese</p>
+		<div id="opere-artista">
+		<section id="stanza">
+			<div class="parete-opere" th:if="${opere}">
+				<div class="opere" th:each = "opera : ${opere}">
+					<a id="nome" th:href = "@{'/opera' + '/' + ${opera.id}}"><img class="opere_bi" th:src="@{${'/images/'+ opera.titolo + '.jpg'}}"/></a>
+					<div class="quadro"><a id="nome" th:href = "@{'/opera' + '/' + ${opera.id}}"><p  th:text = "${opera.titolo}">qui-titolo</p></a></div>
 				</div>
-				<div class="colonne"  th:unless = "${opere}" >
-					<p>Non ci sono opere del mese</p>
-				</div>
-			</section>
+			</div>
+			<div class="nada" th:unless="${opere}"><p>Non ci sono opere del mese</p></div>
+		</section>
+		</div>
 		<footer th:replace="fragments/base.html :: footer"></footer>
 	<body>
 </html>

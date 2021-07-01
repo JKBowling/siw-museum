@@ -1,15 +1,19 @@
 package it.uniroma3.siw.spring.model;
 
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 import lombok.Data;
@@ -29,12 +33,14 @@ public class Artista {
 	private String cognome;
 	
 	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataNascita;
 	
 	@Column(nullable=false)
 	private String luogoNascita;
 	
 	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataMorte;
 	
 	@Column(nullable=false)
@@ -49,7 +55,7 @@ public class Artista {
 	@Column(unique = true)
 	private String code;
 	
-	@OneToMany(mappedBy = "autore")
+	@OneToMany(mappedBy = "autore",cascade=CascadeType.ALL)
 	private List<Opera> opere;
 	
 	public Artista() {

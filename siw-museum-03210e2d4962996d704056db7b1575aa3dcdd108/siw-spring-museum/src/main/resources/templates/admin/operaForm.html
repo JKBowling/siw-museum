@@ -16,25 +16,36 @@
 					<span><input type = "date" th:field = "*{annoRealizzazione}"/></span>
 				</div>
 				<div class = "dati">
-					
-                	<div><span class="label">Descrizione:</span></div>
-					<span><input type = "text" th:field = "*{descrizione}" required/></span>
+					<span>Descrizione:</span>
+					<textarea th:field = "*{descrizione}"  cols="100" rows="10" required>Inserisci informazioni circa la descrizione dell'opera</textarea>
 				</div>
 				<div class = "dati">
-					
                 	<div><span class="label">Codice:</span></div>
 					<span><input type = "text" th:field = "*{code}" required/></span>
 				</div>
 				<div class = "dati">
 					<span>Collezione</span>
-					<select name = "collezione" th:field = "*{collezione}">
+					<select name = "collection">
 						<option th:each = "collezione : ${collezioni}"
-								th:value = "collezione.nome" 
+								th:value = "|${collezione.nome}|" 
 								th:text = "${collezione.code} + ':' + ${collezione.nome}">
 						</option>
 					</select>	
 				</div>
+				<!--<div class = "dati">
+					<div><span class="label">Artista:</span></div>
+					<span><input type = "text" name="artista"  required/></span>
+				</div>-->
 				
+				<div class = "dati">
+					<span>Artista:</span>
+					<select name = "artista">
+						<option th:each = "artista : ${artisti}"
+								th:value = "|${artista.nome} ${artista.cognome}|" 
+								th:text = "|${artista.nome} ${artista.cognome}|">
+						</option>
+					</select>	
+				</div>
 				<div class = "btn">
 					<span><button type = "submit">Inserisci</button></span>
 				</div>
