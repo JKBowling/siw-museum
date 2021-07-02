@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='Dettaglio artista')">
+	
+	</head>
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>
+			<p th:if="${artisti}" id="par">I nostri artisti</p>
+			<p th:unless="${artisti}" id="par">Non ci sono artisti</p>
+			<div id="immaginiOpere">
+				<span class="colonne" th:each = "artista : ${artisti}">
+					<a id="nome" th:href = "@{'/artista' + '/' + ${artista.id}}">
+						<img class="ritratto" th:src="@{${'/images/' + artista.nome + ' ' + artista.cognome + '.jpg'}}"/>
+					</a>
+					<a id="nome" th:href = "@{'/artista' + '/' + ${artista.id}}"  
+						style="text-transform: uppercase;" 
+						th:text = "|${artista.nome} ${artista.cognome}|">qui-nome-artista
+					</a>
+				</span>
+			</div>
+		<footer th:replace="fragments/base.html :: footer"></footer>
+	</body>
+</html>

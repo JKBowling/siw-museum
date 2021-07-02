@@ -1,0 +1,54 @@
+footer{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width:95%;
+	background-color: rgba(229,229,229, 0.3);
+
+}
+
+#info-container{
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:center;
+	height: 100%;
+	width: 90%;
+	margin:10%;
+	justify-content: space-around;
+}
+
+#email{
+	font-size:63%;
+}
+
+#intestazione{
+	font-size: 100%;
+	color:#f3fafb;
+}
+
+.info{
+	display:flex;
+	flex-direction: column;
+	align-items:center;
+	width: 30%;
+	height:100%;
+	color:#f3fafb;
+}
+
+.title{
+	width:100%;
+	text-align: center;
+	font-size:75%;
+}
+
+
+.utili{
+	width:50%;
+	height:100%;
+	font-size:80%;
+	
+}
+
+.end{
+	margin:10%;
+}
