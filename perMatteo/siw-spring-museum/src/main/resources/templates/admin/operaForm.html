@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='home')"></head>
+
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>
+		<form th:action = "@{/admin/opera}" method = "POST" th:object = "${opera}">
+			<div th:if="${#fields.hasGlobalErrors()}">
+  				<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+			</div>	
+			<div class = "container">
+				<div class = "dati">
+					<section class="errore"><span class="simbol" th:if="${#fields.hasErrors('titolo')}"
+               		 th:errors="*{titolo}"></span>
+					<span>Titolo:</span></section>
+					<span><input type = "text" th:field = "*{titolo}" /></span>
+				</div>
+				<div class = "dati">
+					<section class="errore"><span class="simbol" th:if="${#fields.hasErrors('annoRealizzazione')}"
+               		 th:errors="*{annoRealizzazione}"></span>
+					<span>Anno Di Realizzazione:</span></section>
+					<span><input type = "text" th:field = "*{annoRealizzazione}"/></span>
+				</div>
+				<div class = "dati">
+					<section class="errore"><span class="simbol" th:if="${#fields.hasErrors('descrizione')}"
+               		 th:errors="*{descrizione}"></span>
+					<span>Descrizione:</span></section>
+					<textarea th:field = "*{descrizione}"  cols="100" rows="10" >Inserisci informazioni circa la descrizione dell'opera</textarea>
+				</div>
+				<div class = "dati">
+                	<section class="errore"><span class="simbol" th:if="${#fields.hasErrors('code')}"
+               		 th:errors="*{code}"></span>
+					<span>Codice:</span></section>
+					<span><input type = "text" th:field = "*{code}" /></span>
+				</div>
+				<div class = "dati">
+					<section class="errore"><span class="simbol" th:if="${#fields.hasErrors('collezione')}"
+               		 th:errors="*{collezione}"></span>
+					<span>Collezione:</span></section>
+					<select name = "collection">
+						<option th:each = "collezione : ${collezioni}"
+								th:value = "|${collezione.nome}|" 
+								th:text = "${collezione.code} + ':' + ${collezione.nome}">
+						</option>
+					</select>	
+				</div>				
+				<div class = "dati">
+					<section class="errore"><span class="simbol" th:if="${#fields.hasErrors('autore')}"
+               		 th:errors="*{autore}"></span>
+					<span>Artista:</span></section>
+					<select name = "artista">
+						<option th:each = "artista : ${artisti}"
+								th:value = "|${artista.nome} ${artista.cognome}|" 
+								th:text = "|${artista.nome} ${artista.cognome}|">
+						</option>
+					</select>	
+				</div>
+				<div class = "btn">
+					<span><button type = "submit">Inserisci</button></span>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>	
+					
+			
