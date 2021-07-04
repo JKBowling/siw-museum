@@ -1,8 +1,6 @@
 package it.uniroma3.siw.spring.controller;
 
 import java.util.List;
-import java.util.Random;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +16,16 @@ public class MainController {
 	@Autowired 
 	public OperaService operaService;
 	
-	public Random random;
-	
 	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
 	public String index(Model model) {
+		
 		List<Opera> delMese = this.operaService.opereDelMese();
+		
 		if(delMese.size()!=0)
 			model.addAttribute("opere",delMese);
+		
 		return "/index.html";
+		
 	}
 	
 	

@@ -6,10 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 
 import lombok.Data;
@@ -29,6 +32,7 @@ public class Curatore {
 	private String cognome;
 	
 	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataNascita;
 	
 	@Column
@@ -43,7 +47,7 @@ public class Curatore {
 	@Column(unique = true)
 	private String matricola;
 	
-	@OneToMany(mappedBy = "curatore")
+	@OneToMany(mappedBy = "curatore", cascade = CascadeType.ALL)
 	private List<Collezione> collezioni;
 	
 	public Curatore() {

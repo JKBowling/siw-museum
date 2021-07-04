@@ -29,16 +29,6 @@ public class ArtistaService {
 	}
 	
 	@Transactional
-	public Boolean eliminaArtista(String nome,String cognome) {
-		List<Artista> artistaElimina = this.artistaRepository.findByNomeAndCognomeIgnoreCaseContaining(nome, cognome);
-			if(artistaElimina.size()!=0) {
-				this.artistaRepository.deleteAll(artistaElimina);
-				return true;
-			}
-		return false;
-	}
-	
-	@Transactional
 	public Artista artistaPerId(Long id) {
 		Optional<Artista> optional = artistaRepository.findById(id);
 		if (optional.isPresent())
@@ -69,6 +59,16 @@ public class ArtistaService {
 			return true;
 		else 
 			return false;
+	}
+	
+	@Transactional
+	public Boolean eliminaArtista(String nome,String cognome) {
+		List<Artista> artistaElimina = this.artistaRepository.findByNomeAndCognomeIgnoreCaseContaining(nome, cognome);
+			if(artistaElimina.size()!=0) {
+				this.artistaRepository.deleteAll(artistaElimina);
+				return true;
+			}
+		return false;
 	}
 	
 }

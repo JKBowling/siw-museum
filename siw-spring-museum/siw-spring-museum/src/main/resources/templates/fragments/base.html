@@ -1,20 +1,23 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head th:fragment="headerfiles(title)">
-		<meta charset="UTF-8" />
-		<link th:href="@{/css/index.css}" rel="stylesheet">
-		<link th:href="@{/css/header.css}" rel="stylesheet">
-		<link th:href="@{/css/footer.css}" rel="stylesheet">
-		<link th:href="@{/css/login.css}" rel="stylesheet">
-		<link th:href="@{/css/artista.css}" rel="stylesheet">
-		<link th:href="@{/css/artisti.css}" rel="stylesheet">
-		<link th:href="@{/css/admin.css}" rel="stylesheet">
-		<link th:href="@{/css/opera.css}" rel="stylesheet">
-		<link th:href="@{/css/table.css}" rel="stylesheet">
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css2?family=Almendra+SC&display=swap" rel="stylesheet">
-		<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
-		<title th:text="${title}">titolo della pagina</title>
+		<th:block th:fragment="baseContent">
+			<meta charset="UTF-8" />
+			<link th:href="@{/css/index.css}" rel="stylesheet">
+			<link th:href="@{/css/header.css}" rel="stylesheet">
+			<link th:href="@{/css/footer.css}" rel="stylesheet">
+			<link th:href="@{/css/login.css}" rel="stylesheet">
+			<link th:href="@{/css/artista.css}" rel="stylesheet">
+			<link th:href="@{/css/artisti.css}" rel="stylesheet">
+			<link th:href="@{/css/admin.css}" rel="stylesheet">
+			<link th:href="@{/css/opera.css}" rel="stylesheet">
+			<link th:href="@{/css/table.css}" rel="stylesheet">
+			<link th:href="@{/css/collezione.css}" rel="stylesheet">
+			<link rel="preconnect" href="https://fonts.gstatic.com">
+			<link href="https://fonts.googleapis.com/css2?family=Almendra+SC&display=swap" rel="stylesheet">
+			<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+			<title th:text="${title}">titolo della pagina</title>
+		</th:block>	
 	</head>
 	<body>
 		<header id = "intestazione-start" th:fragment="intestazione">

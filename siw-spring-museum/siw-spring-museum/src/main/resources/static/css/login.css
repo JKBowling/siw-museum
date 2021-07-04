@@ -27,7 +27,7 @@
 a.close{
 	color: black;
 }
-form{
+form.popup{
 	display: flex;
 	justify-content: center;
 	margin: 50px auto 300px auto;

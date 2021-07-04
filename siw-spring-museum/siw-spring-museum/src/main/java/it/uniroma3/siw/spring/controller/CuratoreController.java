@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.spring.model.Curatore;
 import it.uniroma3.siw.spring.service.CuratoreService;
@@ -30,7 +31,7 @@ public class CuratoreController {
 		
 			logger.debug("addCuratore");
 			model.addAttribute("curatore", new Curatore());
-			return "/admin/curatoreForm.html";
+			return "/admin/curatore/curatoreForm.html";
 			
 	}
 	
@@ -38,8 +39,31 @@ public class CuratoreController {
 	public String getCuratori(Model model) {
 		
 		model.addAttribute("curatori", this.curatoreService.tutti());
-		return "/admin/curatori.html";
+		return "/admin/curatore/curatori.html";
 		
+	}
+	
+	@RequestMapping(value = "/admin/rimuoviCuratore" , method = RequestMethod.GET)
+	public String rimuoviCuratore (Model model) {
+		
+		model.addAttribute("curatori", this.curatoreService.tutti());
+		return "/admin/curatore/rimuoviCuratoreForm.html";
+		
+	}
+	
+	@RequestMapping(value = "/admin/rimuoviCuratore" , method = RequestMethod.POST)
+	public String rimuoviCuratore(@RequestParam("curatore")String curatore, Model model) {
+
+		curatore.trim();
+		String[] s = curatore.split("\\s+");
+		
+		Boolean v = this.curatoreService.rimuoviCuratore(s[0],s[1]);
+		
+		if(v) {
+			model.addAttribute("curatori",this.curatoreService.tutti());
+			return "/admin/curatore/curatori.html";
+		}
+		return "/admin/curatore/rimuoviCuratoreForm.html";
 	}
 	
 	@RequestMapping(value = "/admin/curatore", method = RequestMethod.POST)
@@ -49,10 +73,10 @@ public class CuratoreController {
 			if(!bindingResult.hasErrors()) {
 					this.curatoreService.inserisci(curatore);
 					model.addAttribute("curatori", this.curatoreService.tutti());
-					return "/admin/curatori.html";
+					return "/admin/curatore/curatori.html";
 			}
 			
-			return "/admin/curatoreForm.html";
+			return "/admin/curatore/curatoreForm.html";
 			
 	}
 	

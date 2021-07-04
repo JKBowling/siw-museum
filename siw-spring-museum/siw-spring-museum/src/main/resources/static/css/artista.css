@@ -41,7 +41,7 @@ img.volto{
 }
 
 #biografia{
-	width:50%;
+	width:40%;
 	height:100%;
 	font-size:100%;
 	display:flex;
@@ -56,6 +56,7 @@ img.volto{
 	margin : 0px auto 0px auto;
 	border : 2px solid #000;
 	text-align : center;
+	font-family: 'Times New Roman', Times, serif;
 }
 
 .life{

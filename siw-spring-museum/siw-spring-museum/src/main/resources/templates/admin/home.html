@@ -11,7 +11,7 @@
     		<ul class = "el">
     			<li><a class = "el" th:href="@{/admin/artisti}">Elenco artisti</a></li>
     			<li><a class = "el" th:href="@{/admin/addArtista}">Inserisci nuovo artista</a></li>
-    			<li><a class = "el" th:href = "@{/admin/rimuoviArtista}">Rimuovi Artista</a></li>
+    			<li><a class = "el" th:href = "@{/admin/rimuoviArtista}">Rimuovi artista</a></li>
     		</ul>
     	</div>
     	<div class = "opt">
@@ -19,17 +19,17 @@
 	   		<ul class = "el">
 				<li><a class = "el" th:href="@{/admin/opere}">Elenco opere</a></li>
 				<li><a class = "el" th:href="@{/admin/addOpera}">Inserisci nuova opera</a></li>	
-				<li><a class = "el" th:href = "@{/admin/opera}">Inserisci Opera del mese</a></li>	
-				<li><a class = "el" th:href = "@{/admin/operaMeseRemove}">Rimuovi Opera Del Mese</a></li>
-				<li><a class = "el" th:href = "@{/admin/rimuoviOpera}">Rimuovi Opera</a></li>	
+				<li><a class = "el" th:href = "@{/admin/opera}">Seleziona opera del mese</a></li>	
+				<li><a class = "el" th:href = "@{/admin/operaMeseRemove}">Rimuovi opera Del Mese</a></li>
+				<li><a class = "el" th:href = "@{/admin/rimuoviOpera}">Rimuovi opera</a></li>	
 	   		</ul>
     	</div>
     	<div class = "opt">
     		<h3> Collezioni </h3>
     		<ul class = "el">
-				<li class = "el"><a class = "el" th:href="@{/admin/collezioni}">Elenco collezioni</a></li>
-				<li class = "el"><a class = "el" th:href="@{/admin/addCollezione}">Inserisci nuova collezione</a></li>
-				<li><a class = "el" href = "#">Rimuovi collezione</a></li>	
+				<li><a class = "el" th:href="@{/admin/collezioni}">Elenco collezioni</a></li>
+				<li><a class = "el" th:href="@{/admin/addCollezione}">Inserisci nuova collezione</a></li>
+				<li><a class = "el" th:href ="@{/admin/rimuoviCollezione}">Rimuovi collezione</a></li>	
     		</ul>
     	</div>
     	<div class = "opt">
@@ -37,7 +37,7 @@
 	   		<ul class = "el">
 				<li><a class = "el" th:href="@{/admin/curatori}">Elenco curatori</a></li>
 				<li><a class = "el" th:href="@{/admin/addCuratore}">Inserisci nuovo curatore</a></li>
-				<li><a class = "el" href = "#">Rimuovi curatore</a></li>	
+				<li><a class = "el" th:href = "@{/admin/rimuoviCuratore}">Rimuovi curatore</a></li>	
 	   		</ul>
     	</div>
     </div>

@@ -21,14 +21,15 @@
 					<span>Curatore</span>
 					<select name = "curator">
 						<option th:each = "curatore : ${curatori}"
-								th:value = "curatore.nome" 
-								th:text = "${curatore.code} + ':' + ${curatore.nome} + ' ' + ${curatore.cognome}">
+								th:value = "|${curatore.matricola} ${curatore.nome} ${curatore.cognome}|" 
+								th:text = "|${curatore.matricola} ${curatore.nome} ${curatore.cognome}|">
 						</option>
 					</select>	
 				</div>
 				<div class = "btn">
 					<span><button type = "submit">Inserisci</button></span>
 				</div>
+				<span><a th:href="@{/admin}">Torna indietro</a></span>
 			</div>
 		</form>
 	</body>

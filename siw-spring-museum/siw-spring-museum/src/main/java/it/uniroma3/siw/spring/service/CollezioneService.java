@@ -38,7 +38,7 @@ public class CollezioneService {
 	
 	@Transactional
 	public List<Collezione> collezionePerNome(String nome) {
-		return collezioneRepository.findByNome(nome);
+		return collezioneRepository.findByNomeIgnoreCaseContaining(nome);
 	}
 	
 	@Transactional
@@ -48,10 +48,26 @@ public class CollezioneService {
 	
 	@Transactional
 	public boolean alreadyExists(Collezione collezione) {
-		List<Collezione> collezioni = this.collezioneRepository.findByNome(collezione.getNome());
+		List<Collezione> collezioni = this.collezioneRepository.findByNomeIgnoreCaseContaining(collezione.getNome());
 		if (collezioni.size() > 0)
 			return true;
 		else 
 			return false;
 	}
+	
+	@Transactional
+	public Boolean rimuoviCollezione(String nome) {
+		List<Collezione> collezioneRemove = this.collezioneRepository.findByNomeIgnoreCaseContaining(nome);
+		
+			if(collezioneRemove.size()!=0) {
+				
+				this.collezioneRepository.deleteAll(collezioneRemove);
+				return true;
+				
+			}
+			
+		return false;
+		
+	}
+	
 }

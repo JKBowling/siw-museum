@@ -35,8 +35,6 @@ public class OperaController {
 	@Autowired
 	private OperaValidator operaValidator;
 	
-	int contatore=0;
-	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@RequestMapping(value = "/admin/addOpera", method = RequestMethod.GET)
@@ -46,7 +44,7 @@ public class OperaController {
 		model.addAttribute("opera", new Opera());
 		model.addAttribute("artisti", this.artistaService.tutti());
 		model.addAttribute("collezioni", this.collezioneService.tutti());
-		return "/admin/operaForm.html";
+		return "/admin/opera/operaForm.html";
 		
 	}
 	
@@ -57,71 +55,40 @@ public class OperaController {
 		
 	}
 	
-	@RequestMapping(value = "/admin/opera", method = RequestMethod.GET)
-	public String opereDelMese(Model model) {
-		return "/admin/opereDelMeseForm.html";
-	}
-	
-	@RequestMapping(value = "/admin/operaMeseRemove", method = RequestMethod.GET)
-	public String rimuoviOperaDelMese(Model model) {
-		return "/admin/rimuoviOperaDelMeseForm.html";
-	}
-	
-	@RequestMapping(value = "/admin/cancellaOperaDelMese", method = RequestMethod.GET)
-	public String cancellaOperaDelMese(@RequestParam("opera") String opera,Model model) {
-		List<Opera> operaTrovata = this.operaService.operaPerTitolo(opera);
-		if(operaTrovata.size()!=0) {
-			this.operaService.updateOperaDelMese(operaTrovata.get(0),false);
-			model.addAttribute("opere",this.operaService.opereDelMese());
-			return "/index.html";
-		}
-		return "/admin/rimuoviOperaDelMeseForm.html";
-	}
-	 
-	@RequestMapping(value = "/admin/operaDelMese", method = RequestMethod.GET)
-	public String setOperaDelMese(@RequestParam("opera") String opera,Model model) {
-		List<Opera> operaTrovata = this.operaService.operaPerTitolo(opera);
-		if(operaTrovata.size()!=0) {
-			this.operaService.updateOperaDelMese(operaTrovata.get(0),true);
-			model.addAttribute("opere",this.operaService.opereDelMese());
-			return "/index.html";
-		}
-		return "/admin/opereDelMeseForm.html";
-	}
-	
-	
 	@RequestMapping(value = "/opere", method = RequestMethod.GET)
 	public String getOpere(Model model) {
-		contatore=	this.operaService.tutti().size();
-			if(contatore!=0)
-				model.addAttribute("opere", this.operaService.tutti());
+
+		model.addAttribute("opere", this.operaService.tutti());
 		return "opere.html";
 		
 	}
 	
 	@RequestMapping(value = "/admin/opere", method = RequestMethod.GET)
 	public String getOpereAdmin(Model model) {
-		contatore=	this.operaService.tutti().size();
-			if(contatore!=0)
-				model.addAttribute("opere", this.operaService.tutti());
-		return "/admin/opereTable.html";
+
+		model.addAttribute("opere", this.operaService.tutti());
+		return "/admin/opera/opereTable.html";
 		
+	}
+	
+	@RequestMapping(value = "/admin/opera", method = RequestMethod.GET)
+	public String opereDelMese(Model model) {
+		return "/admin/opera/opereDelMeseForm.html";
 	}
 	
 	@RequestMapping(value = "/admin/rimuoviOpera" , method = RequestMethod.GET)
 	public String rimuoviOpera(Model model) {
-		return "/admin/rimuoviOperaForm.html";
+		return "/admin/opera/rimuoviOperaForm.html";
 	}
 	
-	@RequestMapping(value = "/admin/cancellaOpera" , method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/cancellaOpera" , method = RequestMethod.POST)
 	public String cancellaOpera(@RequestParam("opera")String cerca, Model model) {
 		Boolean v = this.operaService.eliminaOpera(cerca);
 		if(v) {
-			if(this.operaService.tutti().size()!=0)
-				model.addAttribute("opere",this.operaService.tutti());
+			model.addAttribute("opere",this.operaService.tutti());
 			return "opere.html";
 		}
-	 return "/admin/rimuoviOperaForm.html";
+	 return "/admin/opera/rimuoviOperaForm.html";
 	}
 	
 	
@@ -138,7 +105,46 @@ public class OperaController {
 			model.addAttribute("opere", this.operaService.tutti());
 			return "opere.html";
 		}
-		return "/admin/operaForm.html";
+		return "/admin/opera/operaForm.html";
+	}
+	
+	/* Metodi per le opere del mese */
+	
+	@RequestMapping(value = "/admin/operaDelMese", method = RequestMethod.POST)
+	public String setOperaDelMese(@RequestParam("opera") String opera,Model model) {
+		
+		List<Opera> operaTrovata = this.operaService.operaPerTitolo(opera);
+		
+		if(operaTrovata.size()!=0) {
+			
+			this.operaService.updateOperaDelMese(operaTrovata.get(0),true);
+			model.addAttribute("opere",this.operaService.opereDelMese());
+			return "/admin/opera/successMese.html";
+			
+		}
+		
+		return "/admin/opera/opereDelMeseForm.html";
+		
+	}
+	
+	@RequestMapping(value = "/admin/operaMeseRemove", method = RequestMethod.GET)
+	public String rimuoviOperaDelMese(Model model) {
+		return "/admin/opera/rimuoviOperaDelMeseForm.html";
+	}
+	
+	@RequestMapping(value = "/admin/cancellaOperaDelMese", method = RequestMethod.GET)
+	public String cancellaOperaDelMese(@RequestParam("opera") String opera,Model model) {
+		
+		List<Opera> operaTrovata = this.operaService.operaPerTitolo(opera);
+		
+		if(operaTrovata.size()!=0) {
+			
+			this.operaService.updateOperaDelMese(operaTrovata.get(0),false);
+			model.addAttribute("opere",this.operaService.opereDelMese());
+			return "/index.html";
+			
+		}
+		return "/admin/opera/rimuoviOperaDelMeseForm.html";
 	}
 	
 }

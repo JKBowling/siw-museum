@@ -32,7 +32,7 @@ public class Collezione {
 	@Column
 	private String code;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Curatore curatore;
 	
 	@OneToMany(mappedBy = "collezione", cascade = {CascadeType.PERSIST,CascadeType.MERGE})

@@ -15,10 +15,11 @@
 					<td class = "infoTable" th:text = "${opera.titolo}">qui-titolo</td>
 					<td class = "infoTable" th:text = "${opera.annoRealizzazione}">qui-anno</td>
 					<td class = "infoTable" th:text = "${opera.code}">qui-codice</td>
-					<td class = "infoTable" th:text = "${opera.collezione}">qui-collezione</td>
-					<td class = "infoTable" th:text = "${opera.autore}">qui-autore</td>
+					<td class = "infoTable" th:text = "${opera.collezione.nome}">qui-collezione</td>
+					<td class = "infoTable" th:text = "${opera.autore.nome}">qui-autore</td>
 				</tr>
 			</table>
+			<span><a th:href="@{/admin}">Torna indietro</a></span>
 		</div>
 	</body>
 </html>

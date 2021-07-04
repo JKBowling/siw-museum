@@ -36,20 +36,7 @@ public class OperaService {
 		else 
 			return null;
 	}
-	
-	
-	
-	@Transactional
-	public List<Opera> opereDelMese(){
-		return (List<Opera>) this.operaRepository.findOpereDelMese();
-	}
-	
-	@Transactional
-	public void updateOperaDelMese(Opera opera, Boolean value) {
-		this.operaRepository.setOperaDelMese(value,opera.getId());
-	}
 
-	
 	@Transactional
 	public Boolean eliminaOpera(String titolo) {
 		List<Opera> operaElimina = this.operaRepository.findByTitoloIgnoreCaseContaining(titolo);
@@ -83,6 +70,18 @@ public class OperaService {
 			return true;
 		else 
 			return false;
+	}
+	
+	/* Metodi per le opere del mese */
+	
+	@Transactional
+	public List<Opera> opereDelMese(){
+		return (List<Opera>) this.operaRepository.findOpereDelMese();
+	}
+	
+	@Transactional
+	public void updateOperaDelMese(Opera opera, Boolean value) {
+		this.operaRepository.setOperaDelMese(value,opera.getId());
 	}
 
 }

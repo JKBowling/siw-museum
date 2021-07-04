@@ -37,18 +37,15 @@ public class ArtistaController {
 		
 			logger.debug("addArtista");
 			model.addAttribute("artista", new Artista());
-			return "/admin/artistaForm.html";
+			return "/admin/artista/artistaForm.html";
 			
 	}
-	
-	
 	
 	@RequestMapping(value = "/artista/{id}", method = RequestMethod.GET)
 	public String getArtista(@PathVariable("id") Long id, Model model) {
 		Artista a = this.artistaService.artistaPerId(id);
 		model.addAttribute("artista",a);
-		if(this.operaService.operaPerAutore(a).size()!=0)
-			model.addAttribute("opere",this.operaService.operaPerAutore(a));
+		model.addAttribute("opere",this.operaService.operaPerAutore(a));
 		return "artista.html";
 		
 	}
@@ -65,13 +62,14 @@ public class ArtistaController {
 	public String getArtistiAdmin(Model model) {
 		
 		model.addAttribute("artisti", this.artistaService.tutti());
-		return "/admin/artistiTable.html";
+		return "/admin/artista/artistiTable.html";
 		
 	}
 	
 	@RequestMapping(value = "/admin/rimuoviArtista" , method = RequestMethod.GET)
 	public String rimuoviArtista(Model model) {
-		return "/admin/rimuoviArtistaForm.html";
+		model.addAttribute("artisti", this.artistaService.tutti());
+		return "/admin/artista/rimuoviArtistaForm.html";
 	}
 	
 	@RequestMapping(value = "/admin/cancellaArtista" , method = RequestMethod.POST)
@@ -81,11 +79,10 @@ public class ArtistaController {
 		String[] s = artista.split("\\s+");
 		Boolean v = this.artistaService.eliminaArtista(s[0],s[1]);
 		if(v) {
-			if(this.artistaService.tutti().size()!=0)
-				model.addAttribute("artisti",this.artistaService.tutti());
-			return "artisti.html";
+			model.addAttribute("artisti",this.artistaService.tutti());
+			return "/admin/artista/artistiTable.html";
 		}
-		return "/admin/rimuoviArtistaForm.html";
+		return "/admin/artista/rimuoviArtistaForm.html";
 	}
 	
 	
@@ -96,10 +93,10 @@ public class ArtistaController {
 			if(!bindingResult.hasErrors()) {
 					this.artistaService.inserisci(artista);
 					model.addAttribute("artisti", this.artistaService.tutti());
-					return "/admin/artistiTable.html";
+					return "/admin/artista/artistiTable.html";
 			}
 			
-			return "/admin/artistaForm.html";
+			return "/admin/artista/artistaForm.html";
 			
 	}
 

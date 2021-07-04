@@ -9,7 +9,7 @@ import it.uniroma3.siw.spring.model.Curatore;
 
 public interface CollezioneRepository extends CrudRepository<Collezione, Long> {
 	
-	public List<Collezione> findByNome(String nome);
+	public List<Collezione> findByNomeIgnoreCaseContaining(String nome);
 	
 	public List<Collezione> findByCuratore(Curatore curatore);
 

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.spring.model.Curatore;
 import it.uniroma3.siw.spring.repository.CuratoreRepository;
+
 @Service
 public class CuratoreService {
 	
@@ -51,6 +52,21 @@ public class CuratoreService {
 			return true;
 		else 
 			return false;
+	}
+	
+	@Transactional
+	public Boolean rimuoviCuratore(String nome, String cognome) {
+		List<Curatore> curatoreRemove = this.curatoreRepository.findByNomeAndCognomeIgnoreCaseContaining(nome, cognome);
+		
+			if(curatoreRemove.size()!=0) {
+				
+				this.curatoreRepository.deleteAll(curatoreRemove);
+				return true;
+				
+			}
+			
+		return false;
+		
 	}
 
 }

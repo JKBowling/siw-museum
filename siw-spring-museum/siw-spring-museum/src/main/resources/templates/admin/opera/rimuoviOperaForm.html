@@ -3,15 +3,16 @@
 	<head th:replace="fragments/base.html :: headerfiles(title='home')"></head>
 	<body>
 		<header th:replace="fragments/base.html :: intestazione"></header>
-		<form th:action = "@{/admin/operaDelMese}">
+		<form th:action = "@{/admin/cancellaOpera}" method = POST>
 			<div class = "container">
 				<div class = "dati">
-					<span>Titolo Opera del Mese</span>
+					<span>Titolo Opera da Rimuovere</span>
 					<span><input name = "opera" type = "opera" placeholder = "Titolo opera"/></span>
 				</div>
 				<div class = "btn">
-					<span><button type = "submit">Inserisci</button></span>
+					<span><button type = "submit">Rimuovi</button></span>
 				</div>
+				<span><a th:href="@{/admin}">Torna indietro</a></span>
 			</div>
 		</form>
 	</body>
