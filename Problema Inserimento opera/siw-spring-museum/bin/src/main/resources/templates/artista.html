@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='Dettaglio artista')"></head>
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>
+		<div id="artista-content" >
+			<section id="section-artista" th:if = "${artista}" th:object = "${artista}">
+				<div id="biografia">
+					<div><p class="name-a" th:text = "${artista.nome} + ${artista.cognome}">Nome e cognome Artista</p>
+					<ul id="ul-art">
+						<li class="dato-art">Data di Nascita:&ensp;<p th:text = "${artista.dataNascita}">data di nascita</p></li>
+						<li class="dato-art">Luogo di Nascita:&ensp;<p th:text = "${artista.luogoNascita}">luogo di nascita</p></li>
+						<li class="dato-art">Data di Morte:&ensp;<p th:text = "${artista.dataNascita}">data di nascita</p></li>
+						<li class="dato-art">Luogo di morte:&ensp;<p th:text = "${artista.luogoMorte}">luogo di morte</p></li>
+						<li class="dato-art">Data di Morte:&ensp;<p th:text = "${artista.dataMorte}">data di morte</p></li>
+						<li class="dato-art">Nazionalità:&ensp;<p th:text = "${artista.nazione}">nazionalità</p></li>
+					</ul>
+					</div>
+					<div><p class="life" th:text="${artista.vita}"></p></div>
+				</div>
+				<div id="grafica">
+					<img class="volto" th:src="@{${'/images/' + artista.nome + '.jpg'}}"/>
+					<span class="info_artista">
+					<p id="nomeArt" th:text = "'Ritratto'+' '+ ${artista.nome}+' '+ ${artista.cognome}">qui-nome e cognome</p>
+					</span>
+				</div>
+			</section>
+		</div>
+		<div id="opere-artista"><p id="lista">Opere dell'artista attualmente in esposizione</p>
+		<section id="stanza">
+			<div class="parete-opere" th:if="${opere}">
+				<div class="opere" th:each = "opera : ${opere}">
+					<a id="nome" th:href = "@{'/opera' + '/' + ${opera.id}}"><img class="opere_bi" th:src="@{${'/images/'+ opera.titolo + '.jpg'}}"/></a>
+					<div class="quadro"><a id="nome" th:href = "@{'/opera' + '/' + ${opera.id}}"><p  th:text = "${opera.titolo}">qui-titolo</p></a></div>
+				</div>
+			</div>
+			<div class="nada" th:unless="${opere}"><p>Non ci sono opere dell'artista</p></div>
+		</section>
+		</div>
+		<footer th:replace="fragments/base.html :: footer"></footer>	
+	</body>
+</html>

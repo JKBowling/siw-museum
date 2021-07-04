@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='Dettaglio artista')">
+	
+	</head>
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>
+			<p th:if="${collezioni}" id="par">Le nostre collezioni</p>
+			<p th:unless="${collezioni}" id="par">Non ci sono collezioni</p>
+			<div id="immaginiOpere">
+				<span class="colonne" th:each = "collezione : ${collezioni}">
+					<a id="nome" th:href = "@{'/collezione' + '/' + ${collezione.id}}"  style="text-transform: uppercase;" th:text = "|${collezione.nome}|">qui-nome-artista</a>
+				</span>
+			</div>
+		<footer th:replace="fragments/base.html :: footer"></footer>
+	</body>
+</html>

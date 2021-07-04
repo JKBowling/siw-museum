@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='home')"></head>
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>
+		<form th:action = "@{/register}" method = "POST">
+			<div class = "container">
+				<div class = "dati">
+					<section class="errore"><span class="simbol"  th:if="${#fields.hasErrors('user.nome')}"
+               		 th:errors="${user.nome}" ></span>
+					<span><br>Nome:</span></section>
+					<span><input th:field="${user.nome}" type = "text" /></span>
+				</div>
+				<div class = "dati">
+					<section class="errore"><span class="simbol"  th:if="${#fields.hasErrors('user.cognome')}"
+               		 th:errors="${user.cognome}" ></span>
+					<span><br>Cognome:</span></section>
+					<span><input th:field="${user.cognome}" type = "text" /></span>
+				</div>
+				<div class = "dati">
+					<span><br>Cellulare(facoltativo)</span>
+					<span><input th:field="${user.cellulare}" type = "text"/></span>
+				</div>
+				<div class = "dati">
+					<section class="errore"><span class="simbol"  th:if="${#fields.hasErrors('credentials.username')}"
+               		 th:errors="${credentials.username}" ></span>
+					<span><br>Username:</span></section>
+					<span><input th:field="${credentials.username}" type = "text" /></span>
+				</div>
+				<div class = "dati">
+					<section class="errore"><span class="simbol"  th:if="${#fields.hasErrors('credentials.password')}"
+               		 th:errors="${credentials.password}" ></span>
+					<span><br>Password:</span></section>
+					<span><input th:field="${credentials.password}" type = "password" /></span>
+					
+				</div>
+				<div class = "btn">
+					<span><button type = "submit">Registrati</button></span>
+				</div>
+			</div>
+		</form>
+		<footer th:replace="fragments/base.html :: footer"></footer>
+	</body>
+</html>	
+					
+			

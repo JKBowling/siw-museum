@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='home')"></head>
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>
+		<form th:action = "@{/admin/curatore}" method = "POST" th:object = "${curatore}">
+			<div class = "container">
+				<div class = "dati">
+					<section class="errore"><span class="simbol" th:if="${#fields.hasErrors('nome')}"
+               		 th:errors="*{nome}"></span>
+					<span>Nome:</span></section>
+					<span><input type = "text" th:field = "*{nome}"/></span>
+				</div>
+				<div class = "dati">
+					<section class="errore"><span class="simbol" th:if="${#fields.hasErrors('cognome')}"
+               		 th:errors="*{cognome}"></span>
+					<span>Cognome:</span></section>
+					<span><input type = "text" th:field = "*{cognome}" /></span>
+				</div>
+				<div class = "dati">
+					<section class="errore"><span class="simbol" th:if="${#fields.hasErrors('luogoNascita')}"
+               		 th:errors="*{luogoNascita}"></span>
+					<span>Luogo di Nascita:</span></section>
+					<span><input type = "text" th:field = "*{luogoNascita}" /></span>
+				</div>
+				<div class = "dati">
+					<section class="errore"><span class="simbol" th:if="${#fields.hasErrors('dateofBirth')}"
+               		 th:errors="*{dateofBirth}"></span>
+					<span>Data di Nascita:</span></section>
+					<span><input type = "date" th:field = "*{dateofBirth}"/></span>
+				</div>
+				<div class = "dati">
+					<section class="errore"><span class="simbol" th:if="${#fields.hasErrors('email')}"
+               		 th:errors="*{email}"></span>
+					<span>Email:</span></section>
+					<span><input type = "text" th:field = "*{email}" /></span>
+				</div>
+				<div class = "dati">
+					<section class="errore"><span class="simbol" th:if="${#fields.hasErrors('telefono')}"
+               		 th:errors="*{telefono}"></span>
+					<span>Telefono:</span></section>
+					<span><input type = "text" th:field = "*{telefono}" /></span>
+				</div>
+				<div class = "dati">
+					<section class="errore"><span class="simbol" th:if="${#fields.hasErrors('matricola')}"
+               		 th:errors="*{matricola}"></span>
+					<span>Matricola:</span></section>
+					<span><input type = "text" th:field = "*{matricola}" /></span>
+				</div>
+				<div class = "btn">
+					<span><button type = "submit">Inserisci</button></span>
+				</div>
+			</div>
+		</form>
+
+	</body>
+</html>	
+					
+			

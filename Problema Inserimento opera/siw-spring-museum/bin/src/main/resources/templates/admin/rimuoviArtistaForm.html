@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='home')"></head>
+	<body>
+		<header th:replace="fragments/base.html :: intestazione"></header>
+		<form th:action = "@{/admin/cancellaArtista}">
+			<div class = "container">
+				<div class = "dati">
+					<span>Nome artista da Rimuovere</span>
+					<span><input name = "artista" type = "text" placeholder = "Artista"/></span>
+				</div>
+				<div class = "btn">
+					<span><button type = "submit">Rimuovi</button></span>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>
